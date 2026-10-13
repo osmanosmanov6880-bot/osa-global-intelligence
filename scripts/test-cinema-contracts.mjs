@@ -23,4 +23,6 @@ assert.ok(component.includes("ТЕКСТОВАЯ ВЕРСИЯ"), "no fake video 
 assert.ok(css.includes("@media(max-width:560px)"), "mobile breakpoint exists");
 assert.ok(css.includes("prefers-reduced-motion:reduce"), "reduced-motion support exists");
 assert.ok(page.includes("InteractiveCinema"), "route mounts interactive course");
+assert.ok(component.includes("https://hai.stanford.edu/ai-index"), "primary research source is linked");
+assert.ok(component.includes("https://www.nist.gov/itl/ai-risk-management-framework"), "AI risk framework is linked");
 console.log("PASS: cinema route, 3 chapters, real choice consequences, local progress, mobile and reduced-motion contracts");
