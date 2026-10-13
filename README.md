@@ -7,6 +7,7 @@ OSA is a bilingual intellectual platform for AI, technology, research, and premi
 ## Interactive experience
 - `/cinema` — three-act interactive story with saved local progress.
 - `/cinema/lab` — three practical decision scenarios with contextual feedback and source links.
+- **Mission Control** on `/cinema` — personalized seven-day AI practice plan for learning, workflow improvement, or AI pilot design; risk-aware guidance, per-day checkoffs, local progress persistence, and plain-text export.
 - Progress is stored in browser `localStorage`; it does not sync across devices.
 - The experience is an interactive web story, not a rendered feature film. Do not claim recorded narration, a mastered soundtrack, or MP4 assets unless those files are actually present and verified.
 
