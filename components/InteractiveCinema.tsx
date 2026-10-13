@@ -115,6 +115,15 @@ export function InteractiveCinema() {
         <div className="scene-actions"><button type="button" className="button-secondary" onClick={()=>go(chapterNo,Math.max(0,sceneNo-1))} disabled={chapterNo===0&&sceneNo===0}><ArrowLeft size={15}/> Назад</button><span>ЧИТАЙ · ВЫБИРАЙ · ПРОВЕРЯЙ</span><button type="button" className="button-primary" onClick={next}>{chapterNo===2&&sceneNo===chapter.scenes.length-1?"Завершить путешествие":"Следующая сцена"} <ArrowRight size={15}/></button></div>
       </section>
     </div>
+    <section className="source-library" aria-labelledby="source-library-title">
+      <div><p className="eyebrow">ПРОДОЛЖИТЬ ИССЛЕДОВАНИЕ</p><h2 id="source-library-title">Не верь на слово. Проверь.</h2><p className="source-intro">Курс объясняет идеи, но не заменяет первоисточники. Начни с этих открытых материалов.</p></div>
+      <div className="source-links">
+        <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noreferrer"><span>01 / ИНДЕКС И ДАННЫЕ</span><strong>Stanford HAI · AI Index</strong><small>Ежегодный обзор исследований, внедрения и общественного влияния ИИ ↗</small></a>
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noreferrer"><span>02 / ОЦЕНКА РИСКА</span><strong>NIST · AI Risk Management Framework</strong><small>Практическая структура для оценки и управления рисками AI-систем ↗</small></a>
+        <a href="https://www.ilo.org/publications/generative-ai-and-jobs-global-analysis-potential-effects-job-quantity-and" target="_blank" rel="noreferrer"><span>03 / РАБОТА И НАВЫКИ</span><strong>ILO · Generative AI and Jobs</strong><small>Исследование возможных эффектов генеративного ИИ на занятость ↗</small></a>
+      </div>
+      <p className="source-disclaimer">Источники приведены для самостоятельной проверки. Прогнозы и интерпретации не следует считать установленными фактами; проверяй дату, методику и ограничения каждого исследования.</p>
+    </section>
     <footer className="cinema-footer"><div><b>OSA</b><p>Технологии меняются. Способность мыслить остаётся твоей ответственностью.</p></div><span>ПРОГРЕСС СОХРАНЯЕТСЯ ЛОКАЛЬНО В ЭТОМ БРАУЗЕРЕ</span></footer>
   </main>;
 }
