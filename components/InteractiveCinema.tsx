@@ -46,6 +46,7 @@ export function InteractiveCinema() {
   const [done, setDone] = useState<string[]>([]);
   const [reveal, setReveal] = useState(false);
   const [transcript, setTranscript] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const chapter = chapters[chapterNo];
   const scene = chapter.scenes[sceneNo];
   const key = chapterNo + ":" + sceneNo;
@@ -57,20 +58,38 @@ export function InteractiveCinema() {
       const raw = localStorage.getItem(KEY);
       if (!raw) return;
       const data = JSON.parse(raw) as { chapterNo?: number; sceneNo?: number; answers?: Record<string, number>; done?: string[] };
-      if (Number.isInteger(data.chapterNo) && data.chapterNo! >= 0 && data.chapterNo! < chapters.length) setChapterNo(data.chapterNo!);
-      if (Number.isInteger(data.sceneNo) && data.sceneNo! >= 0 && data.sceneNo! < 10) setSceneNo(data.sceneNo!);
-      if (data.answers && typeof data.answers === "object") setAnswers(data.answers);
-      if (Array.isArray(data.done)) setDone(data.done.filter((v) => typeof v === "string"));
+      const validChapter = Number.isInteger(data.chapterNo) && data.chapterNo! >= 0 && data.chapterNo! < chapters.length ? data.chapterNo! : 0;
+      const validScene = Number.isInteger(data.sceneNo) && data.sceneNo! >= 0 && data.sceneNo! < chapters[validChapter].scenes.length ? data.sceneNo! : 0;
+      setChapterNo(validChapter);
+      setSceneNo(validScene);
+      if (data.answers && typeof data.answers === "object" && !Array.isArray(data.answers)) {
+        const validAnswers: Record<string, number> = {};
+        for (const [answerKey, answerValue] of Object.entries(data.answers)) {
+          const [c, s] = answerKey.split(":").map(Number);
+          if (Number.isInteger(c) && Number.isInteger(s) && chapters[c]?.scenes[s] && Number.isInteger(answerValue) && answerValue >= 0 && answerValue < (chapters[c].scenes[s].options?.length ?? 0)) validAnswers[answerKey] = answerValue;
+        }
+        setAnswers(validAnswers);
+      }
+      if (Array.isArray(data.done)) {
+        const validKeys = new Set(chapters.flatMap((c, ci) => c.scenes.map((_, si) => `${ci}:${si}`)));
+        setDone([...new Set(data.done.filter((v): v is string => typeof v === "string" && validKeys.has(v)))]);
+      }
     } catch { /* corrupted local progress is safely ignored */ }
+    finally { setHydrated(true); }
   }, []);
 
   useEffect(() => {
+    if (!hydrated) return;
     try { localStorage.setItem(KEY, JSON.stringify({ chapterNo, sceneNo, answers, done })); } catch { /* storage may be disabled */ }
-  }, [chapterNo, sceneNo, answers, done]);
+  }, [hydrated, chapterNo, sceneNo, answers, done]);
 
   function go(c: number, s: number) {
     setDone((old) => old.includes(key) ? old : [...old, key]);
     setChapterNo(c); setSceneNo(s); setReveal(false); setTranscript(false);
+  }
+  function previous() {
+    if (sceneNo > 0) go(chapterNo, sceneNo - 1);
+    else if (chapterNo > 0) go(chapterNo - 1, chapters[chapterNo - 1].scenes.length - 1);
   }
   function next() {
     if (sceneNo < chapter.scenes.length - 1) go(chapterNo, sceneNo + 1);
@@ -112,7 +131,7 @@ export function InteractiveCinema() {
         </div>}
         <div className="takeaway"><span>КЛЮЧЕВАЯ МЫСЛЬ</span><p>{scene.insight}</p></div>
         {transcript&&<div className="transcript" role="region" aria-label="Текст повествования"><p className="eyebrow">ПОВЕСТВОВАНИЕ / ТЕКСТ СЦЕНЫ</p><p>{scene.copy}</p><small>В этой версии нет записанного дикторского голоса, музыки или MP4-файла.</small></div>}
-        <div className="scene-actions"><button type="button" className="button-secondary" onClick={()=>go(chapterNo,Math.max(0,sceneNo-1))} disabled={chapterNo===0&&sceneNo===0}><ArrowLeft size={15}/> Назад</button><span>ЧИТАЙ · ВЫБИРАЙ · ПРОВЕРЯЙ</span><button type="button" className="button-primary" onClick={next}>{chapterNo===2&&sceneNo===chapter.scenes.length-1?"Завершить путешествие":"Следующая сцена"} <ArrowRight size={15}/></button></div>
+        <div className="scene-actions"><button type="button" className="button-secondary" onClick={previous} disabled={chapterNo===0&&sceneNo===0}><ArrowLeft size={15}/> Назад</button><span>ЧИТАЙ · ВЫБИРАЙ · ПРОВЕРЯЙ</span><button type="button" className="button-primary" onClick={next}>{chapterNo===2&&sceneNo===chapter.scenes.length-1?"Завершить путешествие":"Следующая сцена"} <ArrowRight size={15}/></button></div>
       </section>
     </div>
     <section className="source-library" aria-labelledby="source-library-title">
