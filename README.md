@@ -24,6 +24,7 @@ OSA is a bilingual intellectual platform for AI, technology, research, and premi
 ## Interactive cinema production docs
 - [Three-act course specification](docs/interactive-cinema/THREE-ACT-CINEMATIC-COURSE.md)
 - [Production status and release gates](docs/interactive-cinema/PRODUCTION-STATUS.md)
+- [GitHub publication manifest and transfer boundaries](docs/RELEASES/GITHUB-PUBLICATION-MANIFEST-2026-10-13.md)
 
 ## Requirements
 - Node.js 22.x
