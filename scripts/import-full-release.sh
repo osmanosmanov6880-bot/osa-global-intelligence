@@ -21,10 +21,10 @@ if [[ ! -d "$SRC" ]]; then
   echo "Archive does not contain OSA_Full_Production_Project/." >&2
   exit 3
 fi
-# Never import environment secrets or generated dependencies.
-rsync -a --delete-excluded \
+# Copy source files without deleting existing target files or importing secrets/build output.
+rsync -a \
   --exclude='.git/' \
-  --exclude='.env' --exclude='.env.*' --exclude='!.env.example' \
+  --include='.env.example' --exclude='.env' --exclude='.env.*' \
   --exclude='node_modules/' --exclude='.next/' --exclude='out/' \
   --exclude='coverage/' --exclude='playwright-report/' \
   --exclude='test-results/' --exclude='*.log' \
