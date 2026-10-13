@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import { ArrowRight, Check, Download, RotateCcw, ShieldCheck, Sparkles, Target } from "lucide-react";
 
 type Profile = "learn" | "work" | "lead";
@@ -37,7 +38,7 @@ export function CinemaMission(){
  <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",marginTop:18,color:"#9aa5bc",fontSize:12}}><span>Прогресс хранится локально и не отправляется на сервер.</span>{notice&&<span role="status" style={{color:"#91aaff"}}>{notice}</span>}<button type="button" onClick={()=>setNotice("Прогресс сохранён на этом устройстве.")} style={{...button,marginLeft:"auto"}}>Проверить прогресс <ArrowRight size={14}/></button></div>
  </section>;
 }
-const label:React.CSSProperties={display:"flex",alignItems:"center",gap:9,font:"10px 'DM Mono',monospace",letterSpacing:"1.3px",color:"#91aaff"};
-const field:React.CSSProperties={display:"block",font:"10px 'DM Mono',monospace",letterSpacing:"1px",color:"#8f9db8"};
-const select:React.CSSProperties={display:"block",width:"100%",marginTop:9,padding:"12px 10px",border:"1px solid #34405a",borderRadius:3,background:"#0b1120",color:"#f4f7ff",font:"12px system-ui"};
-const button:React.CSSProperties={display:"inline-flex",alignItems:"center",gap:8,padding:"10px 12px",border:"1px solid #34405a",borderRadius:3,background:"#111827",color:"#e3e9f7",fontSize:11,cursor:"pointer"};
+const label:CSSProperties={display:"flex",alignItems:"center",gap:9,font:"10px 'DM Mono',monospace",letterSpacing:"1.3px",color:"#91aaff"};
+const field:CSSProperties={display:"block",font:"10px 'DM Mono',monospace",letterSpacing:"1px",color:"#8f9db8"};
+const select:CSSProperties={display:"block",width:"100%",marginTop:9,padding:"12px 10px",border:"1px solid #34405a",borderRadius:3,background:"#0b1120",color:"#f4f7ff",font:"12px system-ui"};
+const button:CSSProperties={display:"inline-flex",alignItems:"center",gap:8,padding:"10px 12px",border:"1px solid #34405a",borderRadius:3,background:"#111827",color:"#e3e9f7",fontSize:11,cursor:"pointer"};
