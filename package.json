@@ -2,7 +2,9 @@
   "name": "osa-digital-temple",
   "version": "1.9.0",
   "private": true,
-  "engines": { "node": ">=22.0.0 <23.0.0" },
+  "engines": {
+    "node": ">=22.0.0 <23.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +12,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "check:assets": "node scripts/quality-gate.mjs",
-    "verify": "npm run check:assets && npm run test:contracts && npm run test:field-log && npm run test:intelligence && npm run check:intelligence-types && npm run test:ux && npm run test:pwa && npm run test:visual && npm run check:syntax && npm run typecheck && npm run lint && npm run build",
+    "verify": "npm run check:assets && npm run test:contracts && npm run test:field-log && npm run test:intelligence && npm run check:intelligence-types && npm run test:ux && npm run test:pwa && npm run test:visual && npm run test:field-guide && npm run check:syntax && npm run typecheck && npm run lint && npm run build",
     "test:contracts": "node scripts/test-runtime-contracts.mjs",
     "check:syntax": "node scripts/check-typescript-syntax.mjs",
     "test:ux": "node scripts/test-ux-contracts.mjs",
@@ -20,7 +22,8 @@
     "test:intelligence": "node scripts/test-intelligence.mjs",
     "check:intelligence-types": "node scripts/check-intelligence-types.mjs",
     "collect:intelligence": "node scripts/collect-intelligence.mjs",
-    "smoke:intelligence-sources": "node scripts/smoke-intelligence-sources.mjs"
+    "smoke:intelligence-sources": "node scripts/smoke-intelligence-sources.mjs",
+    "test:field-guide": "node scripts/test-ai-field-guide.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
