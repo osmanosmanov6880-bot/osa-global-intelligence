@@ -18,7 +18,7 @@ for (const phrase of ["Машина, которая продолжает мыс�
 assert.ok(component.includes("localStorage.setItem"), "progress persistence exists");
 assert.ok(component.includes("localStorage.getItem"), "progress restore exists");
 assert.ok(component.includes("aria-pressed"), "choice state is accessible");
-assert.ok(component.includes("Последствие выбора"), "choice consequence is rendered");
+assert.ok(component.includes("ПОСЛЕДСТВИЕ ВЫБОРА"), "choice consequence is rendered");
 assert.ok(component.includes("ТЕКСТОВАЯ ВЕРСИЯ"), "no fake video claim");
 assert.ok(css.includes("@media(max-width:560px)"), "mobile breakpoint exists");
 assert.ok(css.includes("prefers-reduced-motion:reduce"), "reduced-motion support exists");
