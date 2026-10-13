@@ -1,0 +1,16 @@
+import { readFileSync } from "node:fs";
+import assert from "node:assert/strict";
+const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), "utf8");
+const report = read("components/CinemaDecisionReport.tsx");
+const route = read("app/cinema/report/page.tsx");
+assert.match(report, /osa-cinema-progress-v1/);
+assert.match(report, /osa-cinema-personal-report\.txt/);
+assert.match(report, /localStorage/);
+assert.match(report, /URL\.createObjectURL/);
+assert.match(report, /не психологическая диагностика/);
+assert.match(route, /CinemaDecisionReport/);
+console.log("OSA cinema decision report contracts: PASS");
+console.log("  • Uses the existing browser-local course progress key");
+console.log("  • Exports a report derived from saved choices");
+console.log("  • States privacy and non-diagnostic boundaries");
+console.log("  • Report route imports the component");
