@@ -21,5 +21,6 @@ jobs:
       - run: npm install --package-lock-only --ignore-scripts
       - run: npm install
       - run: node scripts/test-cinema-contracts.mjs
+      - run: npm run test:field-guide
       - run: npm run typecheck
       - run: npm run build
