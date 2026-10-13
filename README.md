@@ -1,8 +1,14 @@
 # OSA — Beyond the Model
 
-**Release source: v1.9.0 — Global AI Intelligence & Research Center.**
+**Interactive Cinema + Decision Lab release.**
 
-OSA is a bilingual intellectual platform for AI, technology, research, and premium educational experiences. This repository is being updated incrementally from the existing OSA project; a commit to the repository should not be mistaken for a completed production deployment.
+OSA is a bilingual intellectual platform for AI, technology, research, and premium educational experiences. The repository is updated incrementally; a commit is not proof of a completed production deployment.
+
+## Interactive experience
+- /cinema — three-act interactive story with saved local progress.
+- /cinema/lab — three practical decision scenarios with contextual feedback and source links.
+- Progress is stored in browser localStorage; it does not sync across devices.
+- The experience is not a rendered film: no recorded narrator or MP4 is included.
 
 ## Main modules
 - Next.js App Router, React, TypeScript and Tailwind CSS.
@@ -24,9 +30,11 @@ npm install
 cp .env.example .env.local
 npm run dev
 ```
+Open http://localhost:3000/cinema and use the Decision Lab link below the experience.
 
 ## Verification
 ```bash
+npm install
 npm run check:assets
 npm run test:contracts
 npm run test:field-log
@@ -39,7 +47,6 @@ npm run typecheck
 npm run lint
 npm run build
 ```
-
 Contract tests and syntax transpilation do not replace a full production build. Live source APIs, database migrations, and deployment configuration must be checked in the target environment.
 
 ## Secrets
