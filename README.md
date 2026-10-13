@@ -5,10 +5,10 @@
 OSA is a bilingual intellectual platform for AI, technology, research, and premium educational experiences. The repository is updated incrementally; a commit is not proof of a completed production deployment.
 
 ## Interactive experience
-- /cinema — three-act interactive story with saved local progress.
-- /cinema/lab — three practical decision scenarios with contextual feedback and source links.
-- Progress is stored in browser localStorage; it does not sync across devices.
-- The experience is not a rendered film: no recorded narrator or MP4 is included.
+- `/cinema` — three-act interactive story with saved local progress.
+- `/cinema/lab` — three practical decision scenarios with contextual feedback and source links.
+- Progress is stored in browser `localStorage`; it does not sync across devices.
+- The experience is an interactive web story, not a rendered feature film. Do not claim recorded narration, a mastered soundtrack, or MP4 assets unless those files are actually present and verified.
 
 ## Main modules
 - Next.js App Router, React, TypeScript and Tailwind CSS.
@@ -19,6 +19,10 @@ OSA is a bilingual intellectual platform for AI, technology, research, and premi
 - Human editorial moderation; collected materials are not auto-published.
 - Research metadata and visible scholarly retraction signals.
 - PWA shell and mobile-first local tools.
+
+## Interactive cinema production docs
+- [Three-act course specification](docs/interactive-cinema/THREE-ACT-CINEMATIC-COURSE.md)
+- [Production status and release gates](docs/interactive-cinema/PRODUCTION-STATUS.md)
 
 ## Requirements
 - Node.js 22.x
