@@ -1,28 +1,49 @@
-# OSA — Global AI Intelligence & Research Center
+# OSA — Beyond the Model
 
-An international learning and research platform about AI, technology, knowledge, and human agency.
+**Release source: v1.9.0 — Global AI Intelligence & Research Center.**
 
-## Incremental upload status
-This repository is being populated in small, reviewable commits. The first release slice is a self-contained interactive cinematic course at `/cinema`; it does not depend on API keys, a database, or third-party media services.
+OSA is a bilingual intellectual platform for AI, technology, research, and premium educational experiences. This repository is being updated incrementally from the existing OSA project; a commit to the repository should not be mistaken for a completed production deployment.
 
-## Run locally
+## Main modules
+- Next.js App Router, React, TypeScript and Tailwind CSS.
+- Russian and English experiences.
+- Technology journal and Research Center.
+- Source adapters for Hacker News, arXiv, Crossref and OpenAlex.
+- DOI/URL deduplication with provider provenance.
+- Human editorial moderation; collected materials are not auto-published.
+- Research metadata and visible scholarly retraction signals.
+- PWA shell and mobile-first local tools.
+
+## Requirements
 - Node.js 22.x
-- `npm install`
-- `npm run dev`
-- Open `http://localhost:3000/cinema`
+- npm 10+
 
-## Course
-1. **The intelligence shift** — what AI can do, and why fluency is not proof of truth.
-2. **The architecture of knowledge** — information access, infrastructure, and power.
-3. **Human agency** — a practical, measured approach to using AI.
+## Local development
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-## Important accuracy note
-This first slice is an interactive text-and-motion web experience, not a rendered film. No recorded voiceover, music, or MP4 footage is included yet. The experience clearly distinguishes narrative text from media that has not been produced.
+## Verification
+```bash
+npm run check:assets
+npm run test:contracts
+npm run test:field-log
+npm run test:intelligence
+npm run test:ux
+npm run test:pwa
+npm run test:visual
+npm run check:syntax
+npm run typecheck
+npm run lint
+npm run build
+```
 
-## Editorial standard
-AI-generated summaries are not peer review. Claims should link to primary sources, and uncertainty must remain visible. User choices must have real effects on the displayed interpretation. Progress is stored locally in the browser and is not sent to a server.
+Contract tests and syntax transpilation do not replace a full production build. Live source APIs, database migrations, and deployment configuration must be checked in the target environment.
 
-## Next upload slices
-1. Course route, interactive scenes, responsive visual system.
-2. Accessibility checks, evidence/source notes, automated interaction tests.
-3. Full platform integration and deployment verification.
+## Secrets
+Never commit production API keys, service-role keys, editor tokens, or real environment files. Configure secrets only in the hosting provider.
+
+## License
+No open-source license is declared yet; all rights are reserved unless a license is added.
